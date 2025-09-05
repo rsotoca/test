@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodolphe Sotoca - Technicien Informatique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white !important;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid white;
+        }
+        
+        .contact-form .form-control {
+            border-radius: 0;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form .form-control:focus {
+            box-shadow: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Rodolphe Sotoca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Expérience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="my_photo.jpg" alt="Rodolphe Sotoca" class="profile-img">
+            <h1>Rodolphe Sotoca</h1>
+            <p class="lead">Technicien informatique passionné par les nouvelles technologies</p>
+            <a href="#contact" class="btn btn-primary btn-lg me-2">Me contacter</a>
+            <button id="downloadCV" class="btn btn-outline-light btn-lg">Télécharger mon CV</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">À propos de moi</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="lead">Technicien informatique passionné par les nouvelles technologies, je souhaite mettre à profit mes 2 ans d'expérience pour contribuer au bon fonctionnement des systèmes informatiques.</p>
+                    <p>Je suis spécialisé dans la maintenance informatique, le support technique et la gestion de parc informatique. Mon objectif est d'apporter des solutions innovantes aux problématiques rencontrées par les utilisateurs.</p>
+                    <p>Diplômé d'une Licence Informatique de l'Université Pierre et Marie Curie à Paris, j'ai travaillé sur des projets scolaires en intelligence artificielle et obtenu d'excellents résultats.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><strong>Nom :</strong> Rodolphe Sotoca</li>
+                                <li class="mb-2"><strong>Téléphone :</strong> +33 6 12 34 56 78</li>
+                                <li class="mb-2"><strong>Ville :</strong> Paris, France</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><strong>Expérience :</strong> 2+ années</li>
+                                <li class="mb-2"><strong>Email :</strong> contact@rodolphesotoca.fr</li>
+                                <li class="mb-2"><strong>Disponibilité :</strong> Immédiate</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-primary me-2">Engagez-moi</a>
+                        <a href="#projects" class="btn btn-outline-primary">Voir mes projets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Mes compétences</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="skill-name">Maintenance informatique</div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Support technique</div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Gestion de parc informatique</div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="skill-name">Windows</div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">MacOS</div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Réseaux informatiques</div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Mes projets</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top project-img" alt="Projet développement web">
+                        <div class="card-body">
+                            <h5 class="card-title">Projet développement web</h5>
+                            <p class="card-text">Projet scolaire réalisé durant mon BTS Informatique, mettant en œuvre des technologies modernes.</p>
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">Voir détails</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top project-img" alt="Projet intelligence artificielle">
+                        <div class="card-body">
+                            <h5 class="card-title">Projet intelligence artificielle</h5>
+                            <p class="card-text">Projet universitaire explorant les concepts d'IA et de machine learning avec Python.</p>
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal2">Voir détails</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top project-img" alt="Solution de sauvegarde">
+                        <div class="card-body">
+                            <h5 class="card-title">Solution de sauvegarde</h5>
+                            <p class="card-text">Mise en place d'une solution de sauvegarde sécurisée pour une entreprise de 50 employés.</p>
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Voir détails</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Mon parcours</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Expériences professionnelles</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Technicien informatique</h5>
+                            <p class="text-muted">Entreprise A, Paris | Mars 2019 - Mars 2021</p>
+                            <ul>
+                                <li>Gestion du parc informatique</li>
+                                <li>Support technique aux utilisateurs</li>
+                                <li>Mise en place de solutions de sauvegarde</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Technicien informatique</h5>
+                            <p class="text-muted">Entreprise B, Lyon | Juin 2017 - Mars 2019</p>
+                            <ul>
+                                <li>Maintenance des équipements informatiques</li>
+                                <li>Installation de logiciels et de périphériques</li>
+                                <li>Formation des utilisateurs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Formation</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Licence Informatique</h5>
+                            <p class="text-muted">Université Pierre et Marie Curie, Paris | 2017 - 2020</p>
+                            <ul>
+                                <li>Projets scolaires en intelligence artificielle</li>
+                                <li>Notes élevées</li>
+                                <li>Algorithmique, systèmes d'information, sécurité informatique</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>BTS Informatique</h5>
+                            <p class="text-muted">Lycée Louis Armand, Paris | 2015 - 2017</p>
+                            <ul>
+                                <li>Projets scolaires en développement web</li>
+                                <li>Mention Bien</li>
+                                <li>Programmation, réseaux, bases de données</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Contactez-moi</h2>
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Votre nom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Votre email" required>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Sujet">
+                        <textarea class="form-control" rows="5" placeholder="Votre message" required></textarea>
+                        <button type="submit" class="btn btn-primary w-100">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <h3>Rodolphe Sotoca</h3>
+            <p>Technicien informatique passionné par les nouvelles technologies</p>
+            <div class="social-links mb-4">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+            </div>
+            <p>&copy; 2023 Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Project Modals -->
+    <div class="modal fade" id="projectModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Projet développement web</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="img-fluid mb-3" alt="Projet développement web">
+                    <p>Ce projet a été réalisé durant mon BTS Informatique au Lycée Louis Armand. L'objectif était de créer un site web dynamique avec une base de données pour une entreprise fictive.</p>
+                    <p><strong>Technologies utilisées :</strong> HTML, CSS, JavaScript, PHP, MySQL</p>
+                    <p><strong>Fonctionnalités :</strong> Interface responsive, système d'authentification, gestion de contenu dynamique</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Projet intelligence artificielle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="img-fluid mb-3" alt="Projet intelligence artificielle">
+                    <p>Projet universitaire réalisé dans le cadre de ma Licence Informatique à l'Université Pierre et Marie Curie. J'ai développé un système de recommandation basé sur des algorithmes de machine learning.</p>
+                    <p><strong>Technologies utilisées :</strong> Python, TensorFlow, scikit-learn, Pandas</p>
+                    <p><strong>Fonctionnalités :</strong> Collecte et prétraitement de données, entraînement de modèle, interface de prédiction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal3" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Solution de sauvegarde</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="img-fluid mb-3" alt="Solution de sauvegarde">
+                    <p>Mise en place d'une solution de sauvegarde complète pour une entreprise de 50 employés durant mon poste de Technicien informatique à l'Entreprise A.</p>
+                    <p><strong>Technologies utilisées :</strong> Veeam Backup, Windows Server, NAS Synology</p>
+                    <p><strong>Fonctionnalités :</strong> Sauvegarde incrémentielle, restauration rapide, vérification d'intégrité, chiffrement des données</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+        
+        // CV Download
+        document.getElementById('downloadCV').addEventListener('click', function() {
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'CV_2025-09-03_Rodolphe_Sotoca.pdf'; // This should point to the actual CV file
+            link.download = 'CV_Rodolphe_Sotoca.pdf';
+            
+            // Trigger the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+        
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous répondrai très rapidement.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
